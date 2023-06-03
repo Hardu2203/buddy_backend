@@ -1,0 +1,22 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?stringtype=unspecified&reWriteBatchedInserts=true
+    jdbcUrl: jdbc:postgresql://localhost:5432/postgres?stringtype=unspecified&reWriteBatchedInserts=true
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+blockchain:
+  publicKey: ${PUBLIC_KEY}
+  privateKey: ${PRIVATE_KEY}
+  nodeAddress: http://127.0.0.1:8545
+
+security:
+  jwt:
+    token:
+      secret-key: rTB9lNFf^Aep4*JaBuUK!0vM&^i^D5hz
+      expire-length: 86400000
