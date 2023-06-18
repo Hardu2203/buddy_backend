@@ -28,7 +28,7 @@ dependencies {
 	implementation("org.mapstruct:mapstruct:1.5.3.Final")
 	implementation("org.springframework.boot:spring-boot-starter-security:2.7.3")
 //	implementation("io.jsonwebtoken:jjwt:0.9.1")
-
+	implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")
 	implementation("com.github.komputing.khash:keccak:1.0.0-RC5")
 	implementation("org.web3j:core:5.0.0")
 	implementation("io.jsonwebtoken:jjwt-api:0.11.2")

@@ -4,27 +4,28 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import java.math.BigDecimal
+import java.math.BigInteger
 
 @Entity
 class SellOrder(
 
     @Id
-    @GeneratedValue
-    val id: Long = 0,
+    val txHash: String,
 
     val sellerPublicKey: String,
 
     val tokenAddress: String,
 
-    val token: String,
+    var status: SellOrderStatus,
 
-    val status: SellOrderStatus,
+    val amount: BigInteger,
 
-    val buyerPublicKey: String?,
+    var buyerPublicKey: String? = null,
 
-    val amount: BigDecimal
+    @GeneratedValue
+    val sellOrderNumber: Long = 0,
 
-)
+    )
 
 enum class SellOrderStatus{
     CREATED,
