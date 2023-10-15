@@ -3,6 +3,7 @@ package com.example.buddy_backend.security
 import com.example.buddy_backend.user.User
 import org.springframework.security.authentication.AbstractAuthenticationToken
 import org.springframework.security.core.GrantedAuthority
+import java.util.*
 
 class SecurityContextUser internal constructor(
     private val principalUser: User,
@@ -30,4 +31,18 @@ class SecurityContextUser internal constructor(
 
         super.setAuthenticated(false)
     }
+
+
 }
+
+//fun AbstractAuthenticationToken.toAuthUser(
+//    authorities: Collection<GrantedAuthority> = emptyList(),
+//): SecurityContextUser {
+//    return SecurityContextUser(
+//        principal as Jwt,
+//        authorities,
+//        UUID.fromString(name),
+//        (principal as Jwt).getClaim("email"),
+//        organisationUuids,
+//    )
+//}

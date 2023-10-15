@@ -15,7 +15,8 @@ class BlockChainMetaDataListener(
     private val blockChainRepository: BlockChainRepository
 ) {
 
-    @Scheduled(initialDelay = 100000, fixedRate = 3600000)
+//    @Scheduled(initialDelay = 100000, fixedRate = 3600000)
+    @Scheduled(fixedRate = 5000)
     fun getBlockNumber() {
         val web3j = Web3j.build(HttpService(blockChainConfig.nodeAddress))
         var result: EthBlockNumber? = EthBlockNumber()

@@ -7,7 +7,6 @@ import java.util.concurrent.ThreadLocalRandom
 @Service
 class UserService(
         val userRepository: UserRepository,
-        val userMapper: UserMapper
 ) {
 
     fun createUser(publicKey: String): User {

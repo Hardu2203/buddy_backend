@@ -18,21 +18,22 @@ class BlockchainConfig{
     var contractId: String = ""
 
     var transferEventParams = listOf<TypeReference<*>>(
-        object : TypeReference<Address>(false) {},
-        object : TypeReference<Address>(false) {},
+        object : TypeReference<Uint>(false) {},
         object : TypeReference<Address>(false) {},
         object : TypeReference<Uint>(false) {},
     )
 
     var depositEventParams = listOf<TypeReference<*>>(
+        object : TypeReference<Uint>(false) {},
         object : TypeReference<Address>(false) {},
         object : TypeReference<Address>(false) {},
+        object : TypeReference<Uint>(false) {},
+        object : TypeReference<Utf8String>(false) {},
         object : TypeReference<Uint>(false) {},
     )
 
     var withdrawEventParams = listOf<TypeReference<*>>(
-        object : TypeReference<Address>(false) {},
-        object : TypeReference<Address>(false) {},
+        object : TypeReference<Uint>(false) {},
         object : TypeReference<Uint>(false) {},
     )
 }

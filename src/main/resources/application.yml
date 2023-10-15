@@ -14,10 +14,17 @@ blockchain:
   publicKey: ${PUBLIC_KEY}
   privateKey: ${PRIVATE_KEY}
   nodeAddress: http://127.0.0.1:8545
-  contractId: "0x9A3DC3F923288922Fa2f9A41C853569954BB2bB2"
+  contractId: "0x4A22a2c1708F4EF977743ffEbf4eF07547eb7E92"
 
 security:
   jwt:
     token:
       secret-key: rTB9lNFf^Aep4*JaBuUK!0vM&^i^D5hz
-      expire-length: 86400000
+#      expire-length: 86400000
+      expire-length: 300000
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

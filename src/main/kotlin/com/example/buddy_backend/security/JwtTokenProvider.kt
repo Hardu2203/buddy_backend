@@ -1,6 +1,8 @@
 package com.example.buddy_backend.security
 
 import com.example.buddy_backend.user.UserService
+import io.jsonwebtoken.Claims
+import io.jsonwebtoken.Jws
 import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
 import jakarta.annotation.PostConstruct
@@ -87,6 +89,16 @@ class JwtTokenProvider @Autowired constructor(
         try {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token)
             return true
+        } catch (e: JwtException) {
+            throw JwtException("Expired or invalid JWT token")
+        } catch (e: IllegalArgumentException) {
+            throw JwtException("Expired or invalid JWT token")
+        }
+    }
+
+    internal fun getClaims(token: String): Jws<Claims> {
+        try {
+            return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token)
         } catch (e: JwtException) {
             throw JwtException("Expired or invalid JWT token")
         } catch (e: IllegalArgumentException) {

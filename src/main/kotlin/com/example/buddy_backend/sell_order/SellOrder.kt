@@ -1,16 +1,15 @@
 package com.example.buddy_backend.sell_order
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
-import java.math.BigDecimal
+import com.example.buddy_backend.config.CurrencyEnum
+import com.example.buddy_backend.token.TokenEnum
+import jakarta.persistence.*
 import java.math.BigInteger
 
 @Entity
 class SellOrder(
 
     @Id
-    val txHash: String,
+    val id: BigInteger,
 
     val sellerPublicKey: String,
 
@@ -20,14 +19,30 @@ class SellOrder(
 
     val amount: BigInteger,
 
+    @Enumerated(EnumType.STRING)
+    val currency: CurrencyEnum,
+
+    val price: BigInteger,
+
+    val token: TokenEnum,
+
     var buyerPublicKey: String? = null,
+) {
 
-    @GeneratedValue
-    val sellOrderNumber: Long = 0,
+    fun toSellOrderDto(): SellOrderDto {
+        return SellOrderDto(
+            cryptoAmount = amount.toDouble(),
+            price = price.toDouble(),
+            cryptoType = token,
+            fiatType = currency,
+            owner = sellerPublicKey,
+            status = status
+        )
+    }
 
-    )
+}
 
-enum class SellOrderStatus{
+enum class SellOrderStatus {
     CREATED,
     ALLOWANCE_CHECK_FAILED,
     TRANSFERING_FUNDS_TO_BUDDY_WALLET,

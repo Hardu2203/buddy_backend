@@ -4,15 +4,15 @@ import com.example.buddy_backend.ControllerBase
 import com.example.buddy_backend.bank.BankRequestDto
 import com.example.buddy_backend.bank.BankResponseDto
 import com.example.buddy_backend.bank.BankService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.example.buddy_backend.security.AuthenticationFacade
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping(ControllerBase.SELL_ORDER)
 class SellOrderController(
-    private val bankService: BankService
+    private val bankService: BankService,
+    private val authenticationFacade: AuthenticationFacade,
+    private val sellOrderService: SellOrderService
 ) {
 
     @PostMapping
@@ -22,5 +22,10 @@ class SellOrderController(
         return bankService.createUserBank(bankRequestDto)
     }
 
+
+    @GetMapping
+    fun getUserSellOrders(): List<SellOrderDto> {
+        return sellOrderService.getActiveSellOrdersByUser()
+    }
 
 }

@@ -38,8 +38,8 @@ class SecurityConfig(
             .authorizeHttpRequests { authz ->
                 authz.requestMatchers("/api/user/*",
                 ).permitAll()
-//                    .anyRequest()
-//                    .authenticated()
+                    .anyRequest()
+                    .authenticated()
             }
 
 
