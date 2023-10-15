@@ -26,6 +26,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -36,4 +37,6 @@ out/
 ### VS Code ###
 .vscode/
 
+### Spring Boot ###
+src/main/resources/developer.yml
 **/src/main/resources/developer.yml
